@@ -50,7 +50,7 @@ class RedisApp(object):
 
         message = message.decode('utf-8')
         # 5% of chance that message contains error
-        is_message_correct = random.choices([True, False], [0.95, 0.05])
+        is_message_correct = random.choices((True, False), [0.95, 0.05])[0]
         if not is_message_correct:
             self.send_message('errors', message)
             return
@@ -89,7 +89,10 @@ class RedisApp(object):
         errors = redis.lrange('errors', 0, -1)
         redis.delete('errors')
 
-        print('\n'.join([error.decode('utf-8') for error in errors]))
+        if not errors:
+            print('No errors found')
+        else:
+            print('\n'.join([error.decode('utf-8') for error in errors]))
 
     def run(self):
         if self.check_current_generator():
