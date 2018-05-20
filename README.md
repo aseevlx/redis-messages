@@ -12,9 +12,9 @@ git clone git@github.com:aseevlx/redis-messages.git
 cd redis-messages
 virtualenv --python=python3.6 venv
 source venv/bin/activate
-pip install requirements.txt
+pip install -r requirements.txt
 ```
-Redis легко можно поднять с помощью [Docker-контейнера](https://hub.docker.com/_/redis/)
+Redis можно легко поднять с помощью [Docker-контейнера](https://hub.docker.com/_/redis/)
 
 Если нужно - изменяем хост, порт и базу данных в config.py
 
